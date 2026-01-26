@@ -1,0 +1,34 @@
+{
+  "name": "mono-nooto",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "type": "module",
+  "scripts": {
+    "dev": "turbo dev",
+    "build": "turbo build",
+    "check-types": "turbo check-types",
+    "dev:native": "turbo -F native dev",
+    "dev:web": "turbo -F web dev",
+    "db:push": "turbo -F @mono-nooto/db db:push",
+    "db:studio": "turbo -F @mono-nooto/db db:studio",
+    "db:generate": "turbo -F @mono-nooto/db db:generate",
+    "db:migrate": "turbo -F @mono-nooto/db db:migrate",
+    "check": "biome check --write ."
+  },
+  "dependencies": {
+    "@mono-nooto/env": "workspace:*",
+    "dotenv": "catalog:",
+    "zod": "catalog:"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.2.0",
+    "@mono-nooto/config": "workspace:*",
+    "@types/node": "^22.13.14",
+    "turbo": "^2.6.3",
+    "typescript": "catalog:"
+  },
+  "packageManager": "pnpm@10.23.0"
+}

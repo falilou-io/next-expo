@@ -1,0 +1,25 @@
+{
+  "name": "@mono-nooto/auth",
+  "type": "module",
+  "exports": {
+    ".": {
+      "default": "./src/index.ts"
+    },
+    "./*": {
+      "default": "./src/*.ts"
+    }
+  },
+  "scripts": {},
+  "dependencies": {
+    "@better-auth/expo": "catalog:",
+    "@mono-nooto/db": "workspace:*",
+    "@mono-nooto/env": "workspace:*",
+    "better-auth": "catalog:",
+    "dotenv": "catalog:",
+    "zod": "catalog:"
+  },
+  "devDependencies": {
+    "@mono-nooto/config": "workspace:*",
+    "typescript": "catalog:"
+  }
+}
