@@ -1,9 +1,13 @@
 import { useQuery } from "@tanstack/react-query";
-import { View, Text, ScrollView, TouchableOpacity, StyleSheet } from "react-native";
+import {
+  View,
+  Text,
+  ScrollView,
+  TouchableOpacity,
+  StyleSheet,
+} from "react-native";
 
 import { Container } from "@/components/container";
-import { SignIn } from "@/components/sign-in";
-import { SignUp } from "@/components/sign-up";
 import { authClient } from "@/lib/auth-client";
 import { NAV_THEME } from "@/lib/constants";
 import { useColorScheme } from "@/lib/use-color-scheme";
@@ -22,22 +26,33 @@ export default function Home() {
     <Container>
       <ScrollView style={styles.scrollView}>
         <View style={styles.content}>
-          <Text style={[styles.title, { color: theme.text }]}>BETTER T STACK</Text>
+          <Text style={[styles.title, { color: theme.text }]}>
+            BETTER T STACK
+          </Text>
 
           {session?.user ? (
             <View
-              style={[styles.userCard, { backgroundColor: theme.card, borderColor: theme.border }]}
+              style={[
+                styles.userCard,
+                { backgroundColor: theme.card, borderColor: theme.border },
+              ]}
             >
               <View style={styles.userHeader}>
                 <Text style={[styles.userText, { color: theme.text }]}>
-                  Welcome, <Text style={styles.userName}>{session.user.name}</Text>
+                  Welcome,{" "}
+                  <Text style={styles.userName}>{session.user.name}</Text>
                 </Text>
               </View>
-              <Text style={[styles.userEmail, { color: theme.text, opacity: 0.7 }]}>
+              <Text
+                style={[styles.userEmail, { color: theme.text, opacity: 0.7 }]}
+              >
                 {session.user.email}
               </Text>
               <TouchableOpacity
-                style={[styles.signOutButton, { backgroundColor: theme.notification }]}
+                style={[
+                  styles.signOutButton,
+                  { backgroundColor: theme.notification },
+                ]}
                 onPress={() => {
                   authClient.signOut();
                   queryClient.invalidateQueries();
@@ -49,9 +64,14 @@ export default function Home() {
           ) : null}
 
           <View
-            style={[styles.statusCard, { backgroundColor: theme.card, borderColor: theme.border }]}
+            style={[
+              styles.statusCard,
+              { backgroundColor: theme.card, borderColor: theme.border },
+            ]}
           >
-            <Text style={[styles.cardTitle, { color: theme.text }]}>System Status</Text>
+            <Text style={[styles.cardTitle, { color: theme.text }]}>
+              System Status
+            </Text>
             <View style={styles.statusRow}>
               <View
                 style={[
@@ -60,8 +80,15 @@ export default function Home() {
                 ]}
               />
               <View style={styles.statusContent}>
-                <Text style={[styles.statusTitle, { color: theme.text }]}>ORPC Backend</Text>
-                <Text style={[styles.statusText, { color: theme.text, opacity: 0.7 }]}>
+                <Text style={[styles.statusTitle, { color: theme.text }]}>
+                  ORPC Backend
+                </Text>
+                <Text
+                  style={[
+                    styles.statusText,
+                    { color: theme.text, opacity: 0.7 },
+                  ]}
+                >
                   {isLoading
                     ? "Checking connection..."
                     : isConnected
@@ -78,20 +105,20 @@ export default function Home() {
               { backgroundColor: theme.card, borderColor: theme.border },
             ]}
           >
-            <Text style={[styles.cardTitle, { color: theme.text }]}>Private Data</Text>
+            <Text style={[styles.cardTitle, { color: theme.text }]}>
+              Private Data
+            </Text>
             {privateData && (
-              <Text style={[styles.privateDataText, { color: theme.text, opacity: 0.7 }]}>
+              <Text
+                style={[
+                  styles.privateDataText,
+                  { color: theme.text, opacity: 0.7 },
+                ]}
+              >
                 {privateData.data?.message}
               </Text>
             )}
           </View>
-
-          {!session?.user && (
-            <>
-              <SignIn />
-              <SignUp />
-            </>
-          )}
         </View>
       </ScrollView>
     </Container>
