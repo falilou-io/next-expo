@@ -13,7 +13,7 @@ import {
 } from "react-native";
 
 import { Container } from "@/components/container";
-import { NAV_THEME } from "@/lib/constants";
+import { NAV_THEME } from "@/lib/theme";
 import { useColorScheme } from "@/lib/use-color-scheme";
 import { orpc } from "@/utils/orpc";
 
@@ -73,12 +73,22 @@ export default function TodosScreen() {
 
   return (
     <Container>
-      <ScrollView style={styles.scrollView} contentContainerStyle={styles.contentContainer}>
+      <ScrollView
+        style={styles.scrollView}
+        contentContainerStyle={styles.contentContainer}
+      >
         <View style={styles.header}>
           <View style={styles.headerRow}>
-            <Text style={[styles.title, { color: theme.text }]}>Todo List</Text>
+            <Text style={[styles.title, { color: theme.colors.text }]}>
+              Todo List
+            </Text>
             {totalCount > 0 && (
-              <View style={[styles.badge, { backgroundColor: theme.primary }]}>
+              <View
+                style={[
+                  styles.badge,
+                  { backgroundColor: theme.colors.primary },
+                ]}
+              >
                 <Text style={styles.badgeText}>
                   {completedCount}/{totalCount}
                 </Text>
@@ -87,7 +97,13 @@ export default function TodosScreen() {
           </View>
         </View>
         <View
-          style={[styles.inputCard, { backgroundColor: theme.card, borderColor: theme.border }]}
+          style={[
+            styles.inputCard,
+            {
+              backgroundColor: theme.colors.card,
+              borderColor: theme.colors.border,
+            },
+          ]}
         >
           <View style={styles.inputRow}>
             <View style={styles.inputContainer}>
@@ -95,16 +111,16 @@ export default function TodosScreen() {
                 value={newTodoText}
                 onChangeText={setNewTodoText}
                 placeholder="Add a new task..."
-                placeholderTextColor={theme.text}
+                placeholderTextColor={theme.colors.text}
                 editable={!createMutation.isPending}
                 onSubmitEditing={handleAddTodo}
                 returnKeyType="done"
                 style={[
                   styles.input,
                   {
-                    color: theme.text,
-                    borderColor: theme.border,
-                    backgroundColor: theme.background,
+                    color: theme.colors.text,
+                    borderColor: theme.colors.border,
+                    backgroundColor: theme.colors.background,
                   },
                 ]}
               />
@@ -116,8 +132,11 @@ export default function TodosScreen() {
                 styles.addButton,
                 {
                   backgroundColor:
-                    createMutation.isPending || !newTodoText.trim() ? theme.border : theme.primary,
-                  opacity: createMutation.isPending || !newTodoText.trim() ? 0.5 : 1,
+                    createMutation.isPending || !newTodoText.trim()
+                      ? theme.colors.border
+                      : theme.colors.primary,
+                  opacity:
+                    createMutation.isPending || !newTodoText.trim() ? 0.5 : 1,
                 },
               ]}
             >
@@ -132,8 +151,13 @@ export default function TodosScreen() {
 
         {isLoading && (
           <View style={styles.centerContainer}>
-            <ActivityIndicator size="large" color={theme.primary} />
-            <Text style={[styles.loadingText, { color: theme.text, opacity: 0.7 }]}>
+            <ActivityIndicator size="large" color={theme.colors.primary} />
+            <Text
+              style={[
+                styles.loadingText,
+                { color: theme.colors.text, opacity: 0.7 },
+              ]}
+            >
               Loading todos...
             </Text>
           </View>
@@ -141,16 +165,29 @@ export default function TodosScreen() {
 
         {todos?.data && todos.data.length === 0 && !isLoading && (
           <View
-            style={[styles.emptyCard, { backgroundColor: theme.card, borderColor: theme.border }]}
+            style={[
+              styles.emptyCard,
+              {
+                backgroundColor: theme.colors.card,
+                borderColor: theme.colors.border,
+              },
+            ]}
           >
             <Ionicons
               name="checkbox-outline"
               size={64}
-              color={theme.text}
+              color={theme.colors.text}
               style={{ opacity: 0.5, marginBottom: 16 }}
             />
-            <Text style={[styles.emptyTitle, { color: theme.text }]}>No todos yet</Text>
-            <Text style={[styles.emptyText, { color: theme.text, opacity: 0.7 }]}>
+            <Text style={[styles.emptyTitle, { color: theme.colors.text }]}>
+              No todos yet
+            </Text>
+            <Text
+              style={[
+                styles.emptyText,
+                { color: theme.colors.text, opacity: 0.7 },
+              ]}
+            >
               Add your first task to get started!
             </Text>
           </View>
@@ -163,23 +200,33 @@ export default function TodosScreen() {
                 key={todo.id}
                 style={[
                   styles.todoCard,
-                  { backgroundColor: theme.card, borderColor: theme.border },
+                  {
+                    backgroundColor: theme.colors.card,
+                    borderColor: theme.colors.border,
+                  },
                 ]}
               >
                 <View style={styles.todoRow}>
                   <TouchableOpacity
                     onPress={() => handleToggleTodo(todo.id, todo.completed)}
-                    style={[styles.checkbox, { borderColor: theme.border }]}
+                    style={[
+                      styles.checkbox,
+                      { borderColor: theme.colors.border },
+                    ]}
                   >
                     {todo.completed && (
-                      <Ionicons name="checkmark" size={16} color={theme.primary} />
+                      <Ionicons
+                        name="checkmark"
+                        size={16}
+                        color={theme.colors.primary}
+                      />
                     )}
                   </TouchableOpacity>
                   <View style={styles.todoTextContainer}>
                     <Text
                       style={[
                         styles.todoText,
-                        { color: theme.text },
+                        { color: theme.colors.text },
                         todo.completed && {
                           textDecorationLine: "line-through",
                           opacity: 0.5,
@@ -193,7 +240,11 @@ export default function TodosScreen() {
                     onPress={() => handleDeleteTodo(todo.id)}
                     style={styles.deleteButton}
                   >
-                    <Ionicons name="trash-outline" size={24} color={theme.notification} />
+                    <Ionicons
+                      name="trash-outline"
+                      size={24}
+                      color={theme.colors.notification}
+                    />
                   </TouchableOpacity>
                 </View>
               </View>

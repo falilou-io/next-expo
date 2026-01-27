@@ -1,7 +1,7 @@
 import { ScrollView, Text, View, StyleSheet } from "react-native";
 
 import { Container } from "@/components/container";
-import { NAV_THEME } from "@/lib/constants";
+import { NAV_THEME } from "@/lib/theme";
 import { useColorScheme } from "@/lib/use-color-scheme";
 
 export default function TabTwo() {
@@ -12,8 +12,15 @@ export default function TabTwo() {
     <Container>
       <ScrollView style={styles.scrollView}>
         <View style={styles.content}>
-          <Text style={[styles.title, { color: theme.text }]}>Tab Two</Text>
-          <Text style={[styles.subtitle, { color: theme.text, opacity: 0.7 }]}>
+          <Text style={[styles.title, { color: theme.colors.text }]}>
+            Tab Two
+          </Text>
+          <Text
+            style={[
+              styles.subtitle,
+              { color: theme.colors.text, opacity: 0.7 },
+            ]}
+          >
             Discover more features and content
           </Text>
         </View>

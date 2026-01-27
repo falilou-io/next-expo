@@ -9,7 +9,7 @@ import {
 } from "react-native";
 
 import { authClient } from "@/lib/auth-client";
-import { NAV_THEME } from "@/lib/constants";
+import { NAV_THEME } from "@/lib/theme";
 import { useColorScheme } from "@/lib/use-color-scheme";
 import { queryClient } from "@/utils/orpc";
 
@@ -50,22 +50,43 @@ function SignIn() {
   }
 
   return (
-    <View style={[styles.card, { backgroundColor: theme.card, borderColor: theme.border }]}>
-      <Text style={[styles.title, { color: theme.text }]}>Sign In</Text>
+    <View
+      style={[
+        styles.card,
+        {
+          backgroundColor: theme.colors.card,
+          borderColor: theme.colors.border,
+        },
+      ]}
+    >
+      <Text style={[styles.title, { color: theme.colors.text }]}>Sign In</Text>
 
       {error ? (
-        <View style={[styles.errorContainer, { backgroundColor: theme.notification + "20" }]}>
-          <Text style={[styles.errorText, { color: theme.notification }]}>{error}</Text>
+        <View
+          style={[
+            styles.errorContainer,
+            { backgroundColor: theme.colors.notification + "20" },
+          ]}
+        >
+          <Text
+            style={[styles.errorText, { color: theme.colors.notification }]}
+          >
+            {error}
+          </Text>
         </View>
       ) : null}
 
       <TextInput
         style={[
           styles.input,
-          { color: theme.text, borderColor: theme.border, backgroundColor: theme.background },
+          {
+            color: theme.colors.text,
+            borderColor: theme.colors.border,
+            backgroundColor: theme.colors.background,
+          },
         ]}
         placeholder="Email"
-        placeholderTextColor={theme.text}
+        placeholderTextColor={theme.colors.text}
         value={form.email}
         onChangeText={(value) => handleFormChange("email", value)}
         keyboardType="email-address"
@@ -75,10 +96,14 @@ function SignIn() {
       <TextInput
         style={[
           styles.input,
-          { color: theme.text, borderColor: theme.border, backgroundColor: theme.background },
+          {
+            color: theme.colors.text,
+            borderColor: theme.colors.border,
+            backgroundColor: theme.colors.background,
+          },
         ]}
         placeholder="Password"
-        placeholderTextColor={theme.text}
+        placeholderTextColor={theme.colors.text}
         value={form.password}
         onChangeText={(value) => handleFormChange("password", value)}
         secureTextEntry
@@ -87,7 +112,13 @@ function SignIn() {
       <TouchableOpacity
         onPress={handleLogin}
         disabled={isLoading}
-        style={[styles.button, { backgroundColor: theme.primary, opacity: isLoading ? 0.5 : 1 }]}
+        style={[
+          styles.button,
+          {
+            backgroundColor: theme.colors.primary,
+            opacity: isLoading ? 0.5 : 1,
+          },
+        ]}
       >
         {isLoading ? (
           <ActivityIndicator size="small" color="#ffffff" />

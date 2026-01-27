@@ -1,7 +1,7 @@
 import { Text, View, StyleSheet } from "react-native";
 
 import { Container } from "@/components/container";
-import { NAV_THEME } from "@/lib/constants";
+import { NAV_THEME } from "@/lib/theme";
 import { useColorScheme } from "@/lib/use-color-scheme";
 
 export default function Modal() {
@@ -12,7 +12,9 @@ export default function Modal() {
     <Container>
       <View style={styles.container}>
         <View style={styles.header}>
-          <Text style={[styles.title, { color: theme.text }]}>Modal</Text>
+          <Text style={[styles.title, { color: theme.colors.text }]}>
+            Modal
+          </Text>
         </View>
       </View>
     </Container>

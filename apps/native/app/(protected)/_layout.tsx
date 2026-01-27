@@ -3,7 +3,7 @@ import { Link } from "expo-router";
 import { Drawer } from "expo-router/drawer";
 
 import { HeaderButton } from "@/components/header-button";
-import { NAV_THEME } from "@/lib/constants";
+import { NAV_THEME } from "@/lib/theme";
 import { useColorScheme } from "@/lib/use-color-scheme";
 
 const DrawerLayout = () => {
@@ -14,19 +14,19 @@ const DrawerLayout = () => {
     <Drawer
       screenOptions={{
         headerStyle: {
-          backgroundColor: theme.background,
+          backgroundColor: theme.colors.background,
         },
         headerTitleStyle: {
-          color: theme.text,
+          color: theme.colors.text,
         },
-        headerTintColor: theme.text,
+        headerTintColor: theme.colors.text,
         drawerStyle: {
-          backgroundColor: theme.background,
+          backgroundColor: theme.colors.background,
         },
         drawerLabelStyle: {
-          color: theme.text,
+          color: theme.colors.text,
         },
-        drawerInactiveTintColor: theme.text,
+        drawerInactiveTintColor: theme.colors.text,
       }}
     >
       <Drawer.Screen

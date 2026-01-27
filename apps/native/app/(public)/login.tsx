@@ -11,7 +11,7 @@ import {
 import { useRouter } from "expo-router";
 
 import { authClient } from "@/lib/auth-client";
-import { NAV_THEME } from "@/lib/constants";
+import { NAV_THEME } from "@/lib/theme";
 import { useColorScheme } from "@/lib/use-color-scheme";
 import { queryClient } from "@/utils/orpc";
 
@@ -58,17 +58,22 @@ export default function LoginScreen() {
       <View
         style={[
           styles.card,
-          { backgroundColor: theme.card, borderColor: theme.border },
+          {
+            backgroundColor: theme.colors.card,
+            borderColor: theme.colors.border,
+          },
         ]}
       >
         {error ? (
           <View
             style={[
               styles.errorContainer,
-              { backgroundColor: theme.notification + "20" },
+              { backgroundColor: theme.colors.notification + "20" },
             ]}
           >
-            <Text style={[styles.errorText, { color: theme.notification }]}>
+            <Text
+              style={[styles.errorText, { color: theme.colors.notification }]}
+            >
               {error}
             </Text>
           </View>
@@ -78,13 +83,13 @@ export default function LoginScreen() {
           style={[
             styles.input,
             {
-              color: theme.text,
-              borderColor: theme.border,
-              backgroundColor: theme.background,
+              color: theme.colors.text,
+              borderColor: theme.colors.border,
+              backgroundColor: theme.colors.background,
             },
           ]}
           placeholder="Email"
-          placeholderTextColor={theme.text}
+          placeholderTextColor={theme.colors.text}
           value={form.email}
           onChangeText={(value) => handleFormChange("email", value)}
           keyboardType="email-address"
@@ -95,13 +100,13 @@ export default function LoginScreen() {
           style={[
             styles.input,
             {
-              color: theme.text,
-              borderColor: theme.border,
-              backgroundColor: theme.background,
+              color: theme.colors.text,
+              borderColor: theme.colors.border,
+              backgroundColor: theme.colors.background,
             },
           ]}
           placeholder="Password"
-          placeholderTextColor={theme.text}
+          placeholderTextColor={theme.colors.text}
           value={form.password}
           onChangeText={(value) => handleFormChange("password", value)}
           secureTextEntry
@@ -112,7 +117,10 @@ export default function LoginScreen() {
           disabled={isLoading}
           style={[
             styles.button,
-            { backgroundColor: theme.primary, opacity: isLoading ? 0.5 : 1 },
+            {
+              backgroundColor: theme.colors.primary,
+              opacity: isLoading ? 0.5 : 1,
+            },
           ]}
         >
           {isLoading ? (
