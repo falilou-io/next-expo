@@ -1,7 +1,7 @@
 import { Tabs } from "expo-router";
 
 import { TabBarIcon } from "@/components/tabbar-icon";
-import { NAV_THEME } from "@/lib/constants";
+import { NAV_THEME } from "@/lib/theme";
 import { useColorScheme } from "@/lib/use-color-scheme";
 
 export default function TabLayout() {
@@ -12,11 +12,11 @@ export default function TabLayout() {
     <Tabs
       screenOptions={{
         headerShown: false,
-        tabBarActiveTintColor: theme.primary,
-        tabBarInactiveTintColor: theme.text,
+        tabBarActiveTintColor: theme.colors.primary,
+        tabBarInactiveTintColor: theme.colors.text,
         tabBarStyle: {
-          backgroundColor: theme.background,
-          borderTopColor: theme.border,
+          backgroundColor: theme.colors.background,
+          borderTopColor: theme.colors.border,
         },
       }}
     >
@@ -31,7 +31,9 @@ export default function TabLayout() {
         name="two"
         options={{
           title: "Explore",
-          tabBarIcon: ({ color }) => <TabBarIcon name="compass" color={color} />,
+          tabBarIcon: ({ color }) => (
+            <TabBarIcon name="compass" color={color} />
+          ),
         }}
       />
     </Tabs>

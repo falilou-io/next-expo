@@ -1,6 +1,6 @@
 import { Stack } from "expo-router";
 
-import { NAV_THEME } from "@/lib/constants";
+import { NAV_THEME } from "@/lib/theme";
 import { useColorScheme } from "@/lib/use-color-scheme";
 
 export default function PublicLayout() {
@@ -11,14 +11,14 @@ export default function PublicLayout() {
     <Stack
       screenOptions={{
         headerStyle: {
-          backgroundColor: theme.background,
+          backgroundColor: theme.colors.background,
         },
-        headerTintColor: theme.text,
+        headerTintColor: theme.colors.text,
         headerTitleStyle: {
           fontWeight: "bold",
         },
         contentStyle: {
-          backgroundColor: theme.background,
+          backgroundColor: theme.colors.background,
         },
       }}
     >

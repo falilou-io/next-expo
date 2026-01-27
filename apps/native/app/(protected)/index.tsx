@@ -9,9 +9,11 @@ import {
 
 import { Container } from "@/components/container";
 import { authClient } from "@/lib/auth-client";
-import { NAV_THEME } from "@/lib/constants";
+import { NAV_THEME } from "@/lib/theme";
 import { useColorScheme } from "@/lib/use-color-scheme";
 import { queryClient, orpc } from "@/utils/orpc";
+import { AccordionPreview } from "@/components/TestAccordion";
+import { Button } from "@/components/ui/button";
 
 export default function Home() {
   const { colorScheme } = useColorScheme();
@@ -26,7 +28,7 @@ export default function Home() {
     <Container>
       <ScrollView style={styles.scrollView}>
         <View style={styles.content}>
-          <Text style={[styles.title, { color: theme.text }]}>
+          <Text style={[styles.title, { color: theme.colors.text }]}>
             BETTER T STACK
           </Text>
 
@@ -34,24 +36,30 @@ export default function Home() {
             <View
               style={[
                 styles.userCard,
-                { backgroundColor: theme.card, borderColor: theme.border },
+                {
+                  backgroundColor: theme.colors.card,
+                  borderColor: theme.colors.border,
+                },
               ]}
             >
               <View style={styles.userHeader}>
-                <Text style={[styles.userText, { color: theme.text }]}>
+                <Text style={[styles.userText, { color: theme.colors.text }]}>
                   Welcome,{" "}
                   <Text style={styles.userName}>{session.user.name}</Text>
                 </Text>
               </View>
               <Text
-                style={[styles.userEmail, { color: theme.text, opacity: 0.7 }]}
+                style={[
+                  styles.userEmail,
+                  { color: theme.colors.text, opacity: 0.7 },
+                ]}
               >
                 {session.user.email}
               </Text>
               <TouchableOpacity
                 style={[
                   styles.signOutButton,
-                  { backgroundColor: theme.notification },
+                  { backgroundColor: theme.colors.notification },
                 ]}
                 onPress={() => {
                   authClient.signOut();
@@ -66,10 +74,13 @@ export default function Home() {
           <View
             style={[
               styles.statusCard,
-              { backgroundColor: theme.card, borderColor: theme.border },
+              {
+                backgroundColor: theme.colors.card,
+                borderColor: theme.colors.border,
+              },
             ]}
           >
-            <Text style={[styles.cardTitle, { color: theme.text }]}>
+            <Text style={[styles.cardTitle, { color: theme.colors.text }]}>
               System Status
             </Text>
             <View style={styles.statusRow}>
@@ -80,13 +91,15 @@ export default function Home() {
                 ]}
               />
               <View style={styles.statusContent}>
-                <Text style={[styles.statusTitle, { color: theme.text }]}>
+                <Text
+                  style={[styles.statusTitle, { color: theme.colors.text }]}
+                >
                   ORPC Backend
                 </Text>
                 <Text
                   style={[
                     styles.statusText,
-                    { color: theme.text, opacity: 0.7 },
+                    { color: theme.colors.text, opacity: 0.7 },
                   ]}
                 >
                   {isLoading
@@ -98,21 +111,27 @@ export default function Home() {
               </View>
             </View>
           </View>
-
+          <AccordionPreview />
+          <Button>
+            <Text>Click Me</Text>
+          </Button>
           <View
             style={[
               styles.privateDataCard,
-              { backgroundColor: theme.card, borderColor: theme.border },
+              {
+                backgroundColor: theme.colors.card,
+                borderColor: theme.colors.border,
+              },
             ]}
           >
-            <Text style={[styles.cardTitle, { color: theme.text }]}>
+            <Text style={[styles.cardTitle, { color: theme.colors.text }]}>
               Private Data
             </Text>
             {privateData && (
               <Text
                 style={[
                   styles.privateDataText,
-                  { color: theme.text, opacity: 0.7 },
+                  { color: theme.colors.text, opacity: 0.7 },
                 ]}
               >
                 {privateData.data?.message}

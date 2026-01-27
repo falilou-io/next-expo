@@ -2,7 +2,7 @@ import { Link, useRouter } from "expo-router";
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 
 import { Container } from "@/components/container";
-import { NAV_THEME } from "@/lib/constants";
+import { NAV_THEME } from "@/lib/theme";
 import { useColorScheme } from "@/lib/use-color-scheme";
 
 export default function Onboarding() {
@@ -14,28 +14,37 @@ export default function Onboarding() {
     <Container>
       <View style={styles.content}>
         <View style={styles.header}>
-          <Text style={[styles.title, { color: theme.text }]}>Welcome to</Text>
-          <Text style={[styles.appName, { color: theme.primary }]}>
+          <Text style={[styles.title, { color: theme.colors.text }]}>
+            Welcome to
+          </Text>
+          <Text style={[styles.appName, { color: theme.colors.primary }]}>
             Mono Nooto
           </Text>
-          <Text style={[styles.subtitle, { color: theme.text, opacity: 0.7 }]}>
+          <Text
+            style={[
+              styles.subtitle,
+              { color: theme.colors.text, opacity: 0.7 },
+            ]}
+          >
             Your all-in-one productivity app.
           </Text>
         </View>
 
         <View style={styles.actions}>
           <TouchableOpacity
-            style={[styles.button, { backgroundColor: theme.primary }]}
+            style={[styles.button, { backgroundColor: theme.colors.primary }]}
             onPress={() => router.push("/(public)/login")}
           >
             <Text style={styles.buttonText}>Sign In</Text>
           </TouchableOpacity>
 
           <TouchableOpacity
-            style={[styles.outlineButton, { borderColor: theme.border }]}
+            style={[styles.outlineButton, { borderColor: theme.colors.border }]}
             onPress={() => router.push("/(public)/sign-up")}
           >
-            <Text style={[styles.outlineButtonText, { color: theme.text }]}>
+            <Text
+              style={[styles.outlineButtonText, { color: theme.colors.text }]}
+            >
               Create Account
             </Text>
           </TouchableOpacity>

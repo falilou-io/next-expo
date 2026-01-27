@@ -11,21 +11,24 @@ import { StatusBar } from "expo-status-bar";
 import React, { useRef, useEffect } from "react";
 import { Platform, StyleSheet, View, ActivityIndicator } from "react-native";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
-
+import { PortalHost } from "@rn-primitives/portal";
+import {
+  configureReanimatedLogger,
+  ReanimatedLogLevel,
+} from "react-native-reanimated";
 import { setAndroidNavigationBar } from "@/lib/android-navigation-bar";
-import { NAV_THEME } from "@/lib/constants";
+
+// Configure Reanimated logger to suppress strict mode warnings
+configureReanimatedLogger({
+  level: ReanimatedLogLevel.warn,
+  strict: false,
+});
+
+import { NAV_THEME } from "@/lib/theme";
 import { useColorScheme } from "@/lib/use-color-scheme";
 import { queryClient } from "@/utils/orpc";
 import { authClient } from "@/lib/auth-client";
-
-const LIGHT_THEME: Theme = {
-  ...DefaultTheme,
-  colors: NAV_THEME.light,
-};
-const DARK_THEME: Theme = {
-  ...DarkTheme,
-  colors: NAV_THEME.dark,
-};
+import { useUniwind } from "uniwind";
 
 export const unstable_settings = {
   initialRouteName: "(protected)",
@@ -48,6 +51,7 @@ const styles = StyleSheet.create({
 });
 
 export default function RootLayout() {
+  const { theme } = useUniwind();
   const hasMounted = useRef(false);
   const { colorScheme, isDarkColorScheme } = useColorScheme();
   const [isColorSchemeLoaded, setIsColorSchemeLoaded] = React.useState(false);
@@ -92,7 +96,7 @@ export default function RootLayout() {
   return (
     <>
       <QueryClientProvider client={queryClient}>
-        <ThemeProvider value={isDarkColorScheme ? DARK_THEME : LIGHT_THEME}>
+        <ThemeProvider value={NAV_THEME[theme ?? "light"]}>
           <StatusBar style={isDarkColorScheme ? "light" : "dark"} />
           <GestureHandlerRootView style={styles.container}>
             <Stack screenOptions={{ headerShown: false }}>
@@ -108,6 +112,7 @@ export default function RootLayout() {
               />
               <Stack.Screen name="+not-found" />
             </Stack>
+            <PortalHost />
           </GestureHandlerRootView>
         </ThemeProvider>
       </QueryClientProvider>
