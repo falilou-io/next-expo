@@ -1,4 +1,4 @@
-import "@mono-nooto/env/web";
+import "@minimal/env/web";
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {

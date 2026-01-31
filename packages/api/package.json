@@ -1,5 +1,5 @@
 {
-  "name": "@mono-nooto/api",
+  "name": "@minimal/api",
   "type": "module",
   "exports": {
     ".": {
@@ -11,9 +11,9 @@
   },
   "scripts": {},
   "dependencies": {
-    "@mono-nooto/auth": "workspace:*",
-    "@mono-nooto/db": "workspace:*",
-    "@mono-nooto/env": "workspace:*",
+    "@minimal/auth": "workspace:*",
+    "@minimal/db": "workspace:*",
+    "@minimal/env": "workspace:*",
     "@orpc/client": "catalog:",
     "@orpc/openapi": "catalog:",
     "@orpc/server": "catalog:",
@@ -25,7 +25,7 @@
     "zod": "catalog:"
   },
   "devDependencies": {
-    "@mono-nooto/config": "workspace:*",
+    "@minimal/config": "workspace:*",
     "typescript": "catalog:"
   }
 }

@@ -1,4 +1,4 @@
-import { auth } from "@mono-nooto/auth";
+import { auth } from "@minimal/auth";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 

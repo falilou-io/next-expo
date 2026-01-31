@@ -9,9 +9,9 @@
   },
   "dependencies": {
     "@base-ui/react": "^1.0.0",
-    "@mono-nooto/api": "workspace:*",
-    "@mono-nooto/auth": "workspace:*",
-    "@mono-nooto/env": "workspace:*",
+    "@minimal/api": "workspace:*",
+    "@minimal/auth": "workspace:*",
+    "@minimal/env": "workspace:*",
     "@orpc/client": "catalog:",
     "@orpc/openapi": "catalog:",
     "@orpc/server": "catalog:",
@@ -44,7 +44,7 @@
     "zod": "catalog:"
   },
   "devDependencies": {
-    "@mono-nooto/config": "workspace:*",
+    "@minimal/config": "workspace:*",
     "@tailwindcss/postcss": "^4.1.10",
     "@tanstack/react-query-devtools": "^5.91.1",
     "@types/node": "^20",

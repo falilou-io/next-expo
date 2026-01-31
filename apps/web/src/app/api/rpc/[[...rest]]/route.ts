@@ -1,5 +1,5 @@
-import { createContext } from "@mono-nooto/api/context";
-import { appRouter } from "@mono-nooto/api/routers/index";
+import { createContext } from "@minimal/api/context";
+import { appRouter } from "@minimal/api/routers/index";
 import { OpenAPIHandler } from "@orpc/openapi/fetch";
 import { OpenAPIReferencePlugin } from "@orpc/openapi/plugins";
 import { onError } from "@orpc/server";

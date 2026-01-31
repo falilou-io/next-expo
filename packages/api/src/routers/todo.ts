@@ -1,5 +1,5 @@
-import { db } from "@mono-nooto/db";
-import { todo } from "@mono-nooto/db/schema/todo";
+import { db } from "@minimal/db";
+import { todo } from "@minimal/db/schema/todo";
 import { and, eq } from "drizzle-orm";
 import z from "zod";
 

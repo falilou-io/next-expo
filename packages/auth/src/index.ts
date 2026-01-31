@@ -1,7 +1,7 @@
 import { expo } from "@better-auth/expo";
-import { db } from "@mono-nooto/db";
-import * as schema from "@mono-nooto/db/schema/auth";
-import { env } from "@mono-nooto/env/server";
+import { db } from "@minimal/db";
+import * as schema from "@minimal/db/schema/auth";
+import { env } from "@minimal/env/server";
 import { betterAuth } from "better-auth";
 import { drizzleAdapter } from "better-auth/adapters/drizzle";
 import { nextCookies } from "better-auth/next-js";

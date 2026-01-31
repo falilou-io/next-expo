@@ -1,5 +1,5 @@
 {
-  "name": "@mono-nooto/auth",
+  "name": "@minimal/auth",
   "type": "module",
   "exports": {
     ".": {
@@ -12,14 +12,14 @@
   "scripts": {},
   "dependencies": {
     "@better-auth/expo": "catalog:",
-    "@mono-nooto/db": "workspace:*",
-    "@mono-nooto/env": "workspace:*",
+    "@minimal/db": "workspace:*",
+    "@minimal/env": "workspace:*",
     "better-auth": "catalog:",
     "dotenv": "catalog:",
     "zod": "catalog:"
   },
   "devDependencies": {
-    "@mono-nooto/config": "workspace:*",
+    "@minimal/config": "workspace:*",
     "typescript": "catalog:"
   }
 }

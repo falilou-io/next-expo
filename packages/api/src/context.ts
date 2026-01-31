@@ -1,6 +1,6 @@
 import type { NextRequest } from "next/server";
 
-import { auth } from "@mono-nooto/auth";
+import { auth } from "@minimal/auth";
 
 export async function createContext(req: NextRequest) {
   const session = await auth.api.getSession({

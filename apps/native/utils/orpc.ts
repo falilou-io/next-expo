@@ -1,6 +1,6 @@
-import type { AppRouterClient } from "@mono-nooto/api/routers/index";
+import type { AppRouterClient } from "@minimal/api/routers/index";
 
-import { env } from "@mono-nooto/env/native";
+import { env } from "@minimal/env/native";
 import { createORPCClient } from "@orpc/client";
 import { RPCLink } from "@orpc/client/fetch";
 import { createTanstackQueryUtils } from "@orpc/tanstack-query";

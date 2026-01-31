@@ -1,4 +1,4 @@
-import type { AppRouterClient } from "@mono-nooto/api/routers/index";
+import type { AppRouterClient } from "@minimal/api/routers/index";
 
 import { createORPCClient } from "@orpc/client";
 import { RPCLink } from "@orpc/client/fetch";

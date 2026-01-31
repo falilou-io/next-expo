@@ -13,8 +13,8 @@
   "dependencies": {
     "@better-auth/expo": "catalog:",
     "@expo/vector-icons": "^15.0.2",
-    "@mono-nooto/api": "workspace:*",
-    "@mono-nooto/env": "workspace:*",
+    "@minimal/api": "workspace:*",
+    "@minimal/env": "workspace:*",
     "@orpc/client": "catalog:",
     "@orpc/tanstack-query": "catalog:",
     "@react-navigation/bottom-tabs": "^7.2.0",
@@ -85,7 +85,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.26.10",
-    "@mono-nooto/config": "workspace:*",
+    "@minimal/config": "workspace:*",
     "@types/react": "~19.1.10",
     "typescript": "catalog:"
   }

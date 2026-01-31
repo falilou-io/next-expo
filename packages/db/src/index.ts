@@ -1,4 +1,4 @@
-import { env } from "@mono-nooto/env/server";
+import { env } from "@minimal/env/server";
 import { drizzle } from "drizzle-orm/node-postgres";
 
 import * as schema from "./schema";
