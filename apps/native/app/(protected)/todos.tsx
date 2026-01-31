@@ -9,7 +9,6 @@ import {
   ActivityIndicator,
   Alert,
   TouchableOpacity,
-  StyleSheet,
 } from "react-native";
 
 import { Container } from "@/components/container";
@@ -73,23 +72,21 @@ export default function TodosScreen() {
 
   return (
     <Container>
-      <ScrollView
-        style={styles.scrollView}
-        contentContainerStyle={styles.contentContainer}
-      >
-        <View style={styles.header}>
-          <View style={styles.headerRow}>
-            <Text style={[styles.title, { color: theme.colors.text }]}>
+      <ScrollView className="flex-1" contentContainerClassName="p-4">
+        <View className="mb-4">
+          <View className="flex-row items-center justify-between">
+            <Text
+              style={{ color: theme.colors.text }}
+              className="text-2xl font-bold"
+            >
               Todo List
             </Text>
             {totalCount > 0 && (
               <View
-                style={[
-                  styles.badge,
-                  { backgroundColor: theme.colors.primary },
-                ]}
+                style={{ backgroundColor: theme.colors.primary }}
+                className="px-2 py-1"
               >
-                <Text style={styles.badgeText}>
+                <Text className="text-white text-xs">
                   {completedCount}/{totalCount}
                 </Text>
               </View>
@@ -97,16 +94,14 @@ export default function TodosScreen() {
           </View>
         </View>
         <View
-          style={[
-            styles.inputCard,
-            {
-              backgroundColor: theme.colors.card,
-              borderColor: theme.colors.border,
-            },
-          ]}
+          style={{
+            backgroundColor: theme.colors.card,
+            borderColor: theme.colors.border,
+          }}
+          className="border p-3 mb-4"
         >
-          <View style={styles.inputRow}>
-            <View style={styles.inputContainer}>
+          <View className="flex-row items-center gap-2">
+            <View className="flex-1">
               <TextInput
                 value={newTodoText}
                 onChangeText={setNewTodoText}
@@ -115,30 +110,26 @@ export default function TodosScreen() {
                 editable={!createMutation.isPending}
                 onSubmitEditing={handleAddTodo}
                 returnKeyType="done"
-                style={[
-                  styles.input,
-                  {
-                    color: theme.colors.text,
-                    borderColor: theme.colors.border,
-                    backgroundColor: theme.colors.background,
-                  },
-                ]}
+                style={{
+                  color: theme.colors.text,
+                  borderColor: theme.colors.border,
+                  backgroundColor: theme.colors.background,
+                }}
+                className="border p-3 text-base"
               />
             </View>
             <TouchableOpacity
               onPress={handleAddTodo}
               disabled={createMutation.isPending || !newTodoText.trim()}
-              style={[
-                styles.addButton,
-                {
-                  backgroundColor:
-                    createMutation.isPending || !newTodoText.trim()
-                      ? theme.colors.border
-                      : theme.colors.primary,
-                  opacity:
-                    createMutation.isPending || !newTodoText.trim() ? 0.5 : 1,
-                },
-              ]}
+              style={{
+                backgroundColor:
+                  createMutation.isPending || !newTodoText.trim()
+                    ? theme.colors.border
+                    : theme.colors.primary,
+                opacity:
+                  createMutation.isPending || !newTodoText.trim() ? 0.5 : 1,
+              }}
+              className="p-3 justify-center items-center"
             >
               {createMutation.isPending ? (
                 <ActivityIndicator size="small" color="#ffffff" />
@@ -150,13 +141,11 @@ export default function TodosScreen() {
         </View>
 
         {isLoading && (
-          <View style={styles.centerContainer}>
+          <View className="items-center justify-center py-8">
             <ActivityIndicator size="large" color={theme.colors.primary} />
             <Text
-              style={[
-                styles.loadingText,
-                { color: theme.colors.text, opacity: 0.7 },
-              ]}
+              style={{ color: theme.colors.text, opacity: 0.7 }}
+              className="mt-4 text-sm"
             >
               Loading todos...
             </Text>
@@ -165,13 +154,11 @@ export default function TodosScreen() {
 
         {todos?.data && todos.data.length === 0 && !isLoading && (
           <View
-            style={[
-              styles.emptyCard,
-              {
-                backgroundColor: theme.colors.card,
-                borderColor: theme.colors.border,
-              },
-            ]}
+            style={{
+              backgroundColor: theme.colors.card,
+              borderColor: theme.colors.border,
+            }}
+            className="border p-8 items-center justify-center"
           >
             <Ionicons
               name="checkbox-outline"
@@ -179,14 +166,15 @@ export default function TodosScreen() {
               color={theme.colors.text}
               style={{ opacity: 0.5, marginBottom: 16 }}
             />
-            <Text style={[styles.emptyTitle, { color: theme.colors.text }]}>
+            <Text
+              style={{ color: theme.colors.text }}
+              className="text-base font-bold mb-2"
+            >
               No todos yet
             </Text>
             <Text
-              style={[
-                styles.emptyText,
-                { color: theme.colors.text, opacity: 0.7 },
-              ]}
+              style={{ color: theme.colors.text, opacity: 0.7 }}
+              className="text-sm text-center"
             >
               Add your first task to get started!
             </Text>
@@ -194,25 +182,21 @@ export default function TodosScreen() {
         )}
 
         {todos?.data && todos.data.length > 0 && (
-          <View style={styles.todosList}>
+          <View className="gap-2">
             {todos.data.map((todo) => (
               <View
                 key={todo.id}
-                style={[
-                  styles.todoCard,
-                  {
-                    backgroundColor: theme.colors.card,
-                    borderColor: theme.colors.border,
-                  },
-                ]}
+                style={{
+                  backgroundColor: theme.colors.card,
+                  borderColor: theme.colors.border,
+                }}
+                className="border p-3"
               >
-                <View style={styles.todoRow}>
+                <View className="flex-row items-center gap-3">
                   <TouchableOpacity
                     onPress={() => handleToggleTodo(todo.id, todo.completed)}
-                    style={[
-                      styles.checkbox,
-                      { borderColor: theme.colors.border },
-                    ]}
+                    style={{ borderColor: theme.colors.border }}
+                    className="w-5 h-5 border-2 justify-center items-center"
                   >
                     {todo.completed && (
                       <Ionicons
@@ -222,23 +206,23 @@ export default function TodosScreen() {
                       />
                     )}
                   </TouchableOpacity>
-                  <View style={styles.todoTextContainer}>
+                  <View className="flex-1">
                     <Text
                       style={[
-                        styles.todoText,
                         { color: theme.colors.text },
                         todo.completed && {
                           textDecorationLine: "line-through",
                           opacity: 0.5,
                         },
                       ]}
+                      className="text-base"
                     >
                       {todo.text}
                     </Text>
                   </View>
                   <TouchableOpacity
                     onPress={() => handleDeleteTodo(todo.id)}
-                    style={styles.deleteButton}
+                    className="p-2"
                   >
                     <Ionicons
                       name="trash-outline"
@@ -255,107 +239,3 @@ export default function TodosScreen() {
     </Container>
   );
 }
-
-const styles = StyleSheet.create({
-  scrollView: {
-    flex: 1,
-  },
-  contentContainer: {
-    padding: 16,
-  },
-  header: {
-    marginBottom: 16,
-  },
-  headerRow: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
-  },
-  title: {
-    fontSize: 24,
-    fontWeight: "bold",
-  },
-  badge: {
-    paddingHorizontal: 8,
-    paddingVertical: 4,
-  },
-  badgeText: {
-    color: "#ffffff",
-    fontSize: 12,
-  },
-  inputCard: {
-    borderWidth: 1,
-    padding: 12,
-    marginBottom: 16,
-  },
-  inputRow: {
-    flexDirection: "row",
-    alignItems: "center",
-    gap: 8,
-  },
-  inputContainer: {
-    flex: 1,
-  },
-  input: {
-    borderWidth: 1,
-    padding: 12,
-    fontSize: 16,
-  },
-  addButton: {
-    padding: 12,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  centerContainer: {
-    alignItems: "center",
-    justifyContent: "center",
-    paddingVertical: 32,
-  },
-  loadingText: {
-    marginTop: 16,
-    fontSize: 14,
-  },
-  emptyCard: {
-    borderWidth: 1,
-    padding: 32,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  emptyTitle: {
-    fontSize: 16,
-    fontWeight: "bold",
-    marginBottom: 8,
-  },
-  emptyText: {
-    fontSize: 14,
-    textAlign: "center",
-  },
-  todosList: {
-    gap: 8,
-  },
-  todoCard: {
-    borderWidth: 1,
-    padding: 12,
-  },
-  todoRow: {
-    flexDirection: "row",
-    alignItems: "center",
-    gap: 12,
-  },
-  checkbox: {
-    width: 20,
-    height: 20,
-    borderWidth: 2,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  todoTextContainer: {
-    flex: 1,
-  },
-  todoText: {
-    fontSize: 16,
-  },
-  deleteButton: {
-    padding: 8,
-  },
-});

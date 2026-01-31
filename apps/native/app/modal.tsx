@@ -1,4 +1,4 @@
-import { Text, View, StyleSheet } from "react-native";
+import { Text, View } from "react-native";
 
 import { Container } from "@/components/container";
 import { NAV_THEME } from "@/lib/theme";
@@ -10,9 +10,12 @@ export default function Modal() {
 
   return (
     <Container>
-      <View style={styles.container}>
-        <View style={styles.header}>
-          <Text style={[styles.title, { color: theme.colors.text }]}>
+      <View className="flex-1 p-4">
+        <View className="mb-4">
+          <Text
+            style={{ color: theme.colors.text }}
+            className="text-xl font-bold"
+          >
             Modal
           </Text>
         </View>
@@ -20,17 +23,3 @@ export default function Modal() {
     </Container>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 16,
-  },
-  header: {
-    marginBottom: 16,
-  },
-  title: {
-    fontSize: 20,
-    fontWeight: "bold",
-  },
-});

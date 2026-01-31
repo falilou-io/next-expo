@@ -1,5 +1,5 @@
 import { Link, useRouter } from "expo-router";
-import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
+import { View, Text, TouchableOpacity } from "react-native";
 
 import { Container } from "@/components/container";
 import { NAV_THEME } from "@/lib/theme";
@@ -12,38 +12,45 @@ export default function Onboarding() {
 
   return (
     <Container>
-      <View style={styles.content}>
-        <View style={styles.header}>
-          <Text style={[styles.title, { color: theme.colors.text }]}>
+      <View className="flex-1 justify-between p-6 pb-12">
+        <View className="mt-16">
+          <Text
+            style={{ color: theme.colors.text }}
+            className="text-[32px] font-light"
+          >
             Welcome to
           </Text>
-          <Text style={[styles.appName, { color: theme.colors.primary }]}>
+          <Text
+            style={{ color: theme.colors.primary }}
+            className="text-[40px] font-bold mb-4"
+          >
             Mono Nooto
           </Text>
           <Text
-            style={[
-              styles.subtitle,
-              { color: theme.colors.text, opacity: 0.7 },
-            ]}
+            style={{ color: theme.colors.text, opacity: 0.7 }}
+            className="text-lg leading-6"
           >
             Your all-in-one productivity app.
           </Text>
         </View>
 
-        <View style={styles.actions}>
+        <View className="gap-4">
           <TouchableOpacity
-            style={[styles.button, { backgroundColor: theme.colors.primary }]}
+            style={{ backgroundColor: theme.colors.primary }}
+            className="p-4 rounded-lg items-center"
             onPress={() => router.push("/(public)/login")}
           >
-            <Text style={styles.buttonText}>Sign In</Text>
+            <Text className="font-bold text-base text-white">Sign In</Text>
           </TouchableOpacity>
 
           <TouchableOpacity
-            style={[styles.outlineButton, { borderColor: theme.colors.border }]}
+            style={{ borderColor: theme.colors.border }}
+            className="p-4 rounded-lg items-center border"
             onPress={() => router.push("/(public)/sign-up")}
           >
             <Text
-              style={[styles.outlineButtonText, { color: theme.colors.text }]}
+              style={{ color: theme.colors.text }}
+              className="font-bold text-base"
             >
               Create Account
             </Text>
@@ -53,51 +60,3 @@ export default function Onboarding() {
     </Container>
   );
 }
-
-const styles = StyleSheet.create({
-  content: {
-    flex: 1,
-    justifyContent: "space-between",
-    padding: 24,
-    paddingBottom: 48,
-  },
-  header: {
-    marginTop: 64,
-  },
-  title: {
-    fontSize: 32,
-    fontWeight: "300",
-  },
-  appName: {
-    fontSize: 40,
-    fontWeight: "bold",
-    marginBottom: 16,
-  },
-  subtitle: {
-    fontSize: 18,
-    lineHeight: 24,
-  },
-  actions: {
-    gap: 16,
-  },
-  button: {
-    padding: 16,
-    borderRadius: 8,
-    alignItems: "center",
-  },
-  buttonText: {
-    color: "#ffffff",
-    fontWeight: "bold",
-    fontSize: 16,
-  },
-  outlineButton: {
-    padding: 16,
-    borderRadius: 8,
-    alignItems: "center",
-    borderWidth: 1,
-  },
-  outlineButtonText: {
-    fontWeight: "bold",
-    fontSize: 16,
-  },
-});

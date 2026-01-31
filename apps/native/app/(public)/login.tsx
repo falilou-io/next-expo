@@ -5,7 +5,6 @@ import {
   TextInput,
   TouchableOpacity,
   View,
-  StyleSheet,
   ScrollView,
 } from "react-native";
 import { useRouter } from "expo-router";
@@ -54,25 +53,22 @@ export default function LoginScreen() {
   }
 
   return (
-    <ScrollView contentContainerStyle={styles.container}>
+    <ScrollView contentContainerClassName="p-4 flex-1 pt-8">
       <View
-        style={[
-          styles.card,
-          {
-            backgroundColor: theme.colors.card,
-            borderColor: theme.colors.border,
-          },
-        ]}
+        style={{
+          backgroundColor: theme.colors.card,
+          borderColor: theme.colors.border,
+        }}
+        className="p-6 rounded-xl border"
       >
         {error ? (
           <View
-            style={[
-              styles.errorContainer,
-              { backgroundColor: theme.colors.notification + "20" },
-            ]}
+            style={{ backgroundColor: theme.colors.notification + "20" }}
+            className="p-3 rounded-lg mb-4"
           >
             <Text
-              style={[styles.errorText, { color: theme.colors.notification }]}
+              style={{ color: theme.colors.notification }}
+              className="text-sm"
             >
               {error}
             </Text>
@@ -80,14 +76,12 @@ export default function LoginScreen() {
         ) : null}
 
         <TextInput
-          style={[
-            styles.input,
-            {
-              color: theme.colors.text,
-              borderColor: theme.colors.border,
-              backgroundColor: theme.colors.background,
-            },
-          ]}
+          style={{
+            color: theme.colors.text,
+            borderColor: theme.colors.border,
+            backgroundColor: theme.colors.background,
+          }}
+          className="h-12 border rounded-lg px-4 text-base mb-4"
           placeholder="Email"
           placeholderTextColor={theme.colors.text}
           value={form.email}
@@ -97,14 +91,12 @@ export default function LoginScreen() {
         />
 
         <TextInput
-          style={[
-            styles.input,
-            {
-              color: theme.colors.text,
-              borderColor: theme.colors.border,
-              backgroundColor: theme.colors.background,
-            },
-          ]}
+          style={{
+            color: theme.colors.text,
+            borderColor: theme.colors.border,
+            backgroundColor: theme.colors.background,
+          }}
+          className="h-12 border rounded-lg px-4 text-base mb-4"
           placeholder="Password"
           placeholderTextColor={theme.colors.text}
           value={form.password}
@@ -115,68 +107,19 @@ export default function LoginScreen() {
         <TouchableOpacity
           onPress={handleLogin}
           disabled={isLoading}
-          style={[
-            styles.button,
-            {
-              backgroundColor: theme.colors.primary,
-              opacity: isLoading ? 0.5 : 1,
-            },
-          ]}
+          style={{
+            backgroundColor: theme.colors.primary,
+            opacity: isLoading ? 0.5 : 1,
+          }}
+          className="h-12 rounded-lg justify-center items-center mt-2"
         >
           {isLoading ? (
             <ActivityIndicator size="small" color="#ffffff" />
           ) : (
-            <Text style={styles.buttonText}>Sign In</Text>
+            <Text className="font-bold text-base text-white">Sign In</Text>
           )}
         </TouchableOpacity>
       </View>
     </ScrollView>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    padding: 16,
-    flex: 1,
-    paddingTop: 32,
-  },
-  title: {
-    fontSize: 24,
-    fontWeight: "bold",
-    marginBottom: 24,
-    textAlign: "center",
-  },
-  card: {
-    padding: 24,
-    borderRadius: 12,
-    borderWidth: 1,
-  },
-  errorContainer: {
-    padding: 12,
-    borderRadius: 8,
-    marginBottom: 16,
-  },
-  errorText: {
-    fontSize: 14,
-  },
-  input: {
-    height: 48,
-    borderWidth: 1,
-    borderRadius: 8,
-    paddingHorizontal: 16,
-    fontSize: 16,
-    marginBottom: 16,
-  },
-  button: {
-    height: 48,
-    borderRadius: 8,
-    justifyContent: "center",
-    alignItems: "center",
-    marginTop: 8,
-  },
-  buttonText: {
-    color: "#ffffff",
-    fontWeight: "bold",
-    fontSize: 16,
-  },
-});

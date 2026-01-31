@@ -24,7 +24,7 @@ export default function Home() {
   return (
     <Container>
       <ScrollView contentContainerClassName="p-4 gap-4">
-        <Text className="text-2xl font-bold">BETTER T STACK</Text>
+        <Text className="text-2xl font-bold">Hello Minimal</Text>
 
         {session?.user ? (
           <Card>

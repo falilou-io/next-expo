@@ -9,7 +9,7 @@ import { QueryClientProvider } from "@tanstack/react-query";
 import { Stack, useRouter, useSegments } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import React, { useRef, useEffect } from "react";
-import { Platform, StyleSheet, View, ActivityIndicator } from "react-native";
+import { Platform, View, ActivityIndicator } from "react-native";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { PortalHost } from "@rn-primitives/portal";
 import {
@@ -38,17 +38,6 @@ const useIsomorphicLayoutEffect =
   Platform.OS === "web" && typeof window === "undefined"
     ? React.useEffect
     : React.useLayoutEffect;
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  loadingContainer: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-});
 
 export default function RootLayout() {
   const { theme } = useUniwind();
@@ -87,7 +76,7 @@ export default function RootLayout() {
 
   if (!isColorSchemeLoaded || isSessionLoading) {
     return (
-      <View style={styles.loadingContainer}>
+      <View className="flex-1 justify-center items-center">
         <ActivityIndicator size="large" />
       </View>
     );
@@ -98,7 +87,7 @@ export default function RootLayout() {
       <QueryClientProvider client={queryClient}>
         <ThemeProvider value={NAV_THEME[theme ?? "light"]}>
           <StatusBar style={isDarkColorScheme ? "light" : "dark"} />
-          <GestureHandlerRootView style={styles.container}>
+          <GestureHandlerRootView className="flex-1">
             <Stack screenOptions={{ headerShown: false }}>
               <Stack.Screen name="(public)" />
               <Stack.Screen name="(protected)" />
