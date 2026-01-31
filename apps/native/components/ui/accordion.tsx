@@ -48,7 +48,7 @@ function AccordionItem({
       )}
       value={value}
       asChild
-      {...props}
+      {...(props as any)}
     >
       <Animated.View
         className="native:overflow-hidden"
@@ -88,7 +88,10 @@ function AccordionTrigger({
       )}
     >
       <AccordionPrimitive.Header>
-        <AccordionPrimitive.Trigger {...props} asChild={Platform.OS !== "web"}>
+        <AccordionPrimitive.Trigger
+          {...(props as any)}
+          asChild={Platform.OS !== "web"}
+        >
           <Trigger
             className={cn(
               "flex-row items-start justify-between gap-4 rounded-md py-4 disabled:opacity-50",
@@ -134,7 +137,7 @@ function AccordionContent({
             web: isExpanded ? "animate-accordion-down" : "animate-accordion-up",
           }),
         )}
-        {...props}
+        {...(props as any)}
       >
         <Animated.View
           exiting={Platform.select({ native: FadeOutUp.duration(200) })}
